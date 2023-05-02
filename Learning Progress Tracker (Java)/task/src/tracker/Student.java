@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class Student {
     protected boolean emailValid = false;
-    protected boolean lastNameValid = false;
-    protected boolean firstNameValid = false;
+    protected boolean lastNameValid = true;
+    protected boolean firstNameValid = true;
     private String firstName;
     private String lastName;
     private String email;
@@ -49,11 +49,11 @@ public class Student {
         String secondName = this.lastName;
 
         if (nameChecker(firstname) == 0 || firstname.length() < 2) {
+            this.firstNameValid = false;
+        }
 
-        } else if (nameChecker(secondName) == 0 || secondName.length() < 2) {
-        } else {
-            this.firstNameValid = true;
-            this.lastNameValid = true;
+        if (nameChecker(secondName) == 0 || secondName.length() < 2) {
+            this.lastNameValid = false;
         }
     }
 
